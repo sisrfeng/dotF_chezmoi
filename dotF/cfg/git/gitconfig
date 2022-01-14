@@ -15,3 +15,5 @@
 	ck = checkout
 [push]
 	default = current
+[color]
+	ui = auto
