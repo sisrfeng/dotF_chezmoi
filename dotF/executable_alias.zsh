@@ -4,8 +4,6 @@
 # https://stackoverflow.com/questions/58601523/how-do-i-remove-the-head-of-dollar-sign-on-stdin-line-in-shell#comment103516994_58601646
 alias '$'='' # 省去删掉复制来的命令 最前面的$
 # oh my git    oh my god
-alias omd='chezmoi --config ~/.config/chezmoi/wf_omd.toml'
-alias x='git'
 
 alias u='unset ALL_PROXY'
 
@@ -801,9 +799,9 @@ alias al='e ~/dotF/alias.zsh; zsh'
 alias in='e ~/dotF/cfg/nvim/init.vim'  # init.vim
 
 
-#y: yyds，我的配置yyds
-# alias y=sy
 
+alias omd='chezmoi --config ~/.config/chezmoi/wf_omd.toml'
+alias x='git'
 # get github
 gg(){
     chpwd_functions=()  # 别显示 所去目录下的文件
@@ -821,11 +819,15 @@ gg(){
 }
 
 # 我最新的配置 真是yyds
+
+
 yy(){
     echo "\n--------------------------------add commit push三连-----------------------------------------------"
     # oh my dotF ( 其实是chezmoi）
     cd $(omd source-path)
     omd add ~/dotF/*
+
+
     git add --verbose  --all .
     if [[ "$1" != "" ]]  # if [[ "$1" == "" ]] 容易出bug？一般都不这么写
     then
