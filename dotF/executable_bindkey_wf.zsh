@@ -71,7 +71,7 @@ bindkey -s '\ec' 'cfg \n'
 # bindkey -s "\C-o" "cle \C-j"  # 很少用
 
 bindkey -s "\C-o" "- \n"  # 和vim的体验一致
-bindkey -s "\eo" "- \n"  #  alt负责路径切换
+bindkey -s "\eo" "~/omd_dotF \n"  #  alt负责路径切换
 # bindkey -s "\C-b" "echo '待用' \n"
 
 # 待绑定：
