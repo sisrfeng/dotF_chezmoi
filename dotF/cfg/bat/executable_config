@@ -1,7 +1,8 @@
 # run `bat --help` to get a list of all possible configuration options.
 
 # --theme="GitHub"  # `bat --list-themes` for available themes
---theme="gruvbox-light"  # `bat --list-themes` for available themes
+# --theme="gruvbox-light"  # `bat --list-themes` for available themes
+--theme="ansi-light"  # `bat --list-themes` for available themes
 
 
 

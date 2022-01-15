@@ -3,6 +3,8 @@
 	filemode = true
 	bare = false
 	logallrefupdates = true
+	eol = lf
+	autocrlf = input
 [remote "origin"]
 	url = https://github.com/jonathanfilip/vim-lucius.git
 	fetch = +refs/heads/*:refs/remotes/origin/*

@@ -85,16 +85,6 @@ fi
 [[ $- != *i* ]] && return
 
 
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/bin" ]; then
-    export PATH="$HOME/bin:$PATH"
-fi
-#
-# 之前把PATH拼错成PAHT了
-export PATH="$PATH:$HOME/dotF/bin_wf:/snap/bin"
 
 # https://zsh.sourceforge.io/Intro/intro_6.html
 DIRSTACKSIZE=15 # Setup dir stack
@@ -366,9 +356,6 @@ compctl -K _pip_completion pip3
 
 # pip zsh completion end
 
-export BAT_THEME="gruvbox-light"
-
-
 
 export PATH="$PATH:/usr/local/go/bin"
 
@@ -428,3 +415,17 @@ export RPS2="%{$fg[cyan]%} 换行后继续敲  %{$reset_color%}"
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/bin" ]; then
+    export PATH="$HOME/bin:$PATH"
+fi
+#
+# 之前把PATH拼错成PAHT了
+export PATH="$HOME/dotF/nvim-linux64/bin:$HOME/dotF/bin_wf:$PATH:/snap/bin"
+# 找nvim时, 优先找dotF里面的,别用/bin等系统目录
+# 这个就不必了:alias nvim='~/dotF/nvim-linux64/bin/nvim'
+#

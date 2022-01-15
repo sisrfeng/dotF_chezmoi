@@ -8,7 +8,7 @@ let $no_vscode = fnamemodify($MYVIMRC,':h') . "/no_vscode.vim"
 
 if exists('g:vscode')
     " 用vscode时，本文件里也有依赖于$MYVIMRC的变量。别扔掉$MYVIMRC
-    let $MYVIMRC =  "/root/dotF/cfg/nvim/init.vim"
+    let $MYVIMRC =  "~/dotF/cfg/nvim/init.vim"
     " 放进if？ gf无法跳到has_vscode.vim
     " let $has_vscode = fnamemodify($MYVIMRC,':h') . "/has_vscode.vim"
 endif
@@ -86,87 +86,89 @@ inoremap <c-c> <c-v>
 
 set iskeyword+=-
 
-" >_>_>1. filetype not search comment========================================begin
-" filetype        on        " 检测文件类型
-" filetype plugin on        " 针对不同的文件类型, load不同plugin
-" filetype indent on        " 针对不同的文件类型采用不同的缩进格式
-filetype plugin indent on " 实现了上面3行
-                            " there is no need  to do ":filetype on" after ":syntax on".
-
-" if the file type is not detected automatically, or it finds the wrong type,
-" you can  add a modeline to your  file.
-" for an idl file use the command:
-" :set filetype=vim
-" 但我用笔记本时，root用户或者vscode-neovim使得modeline是off的，这时要靠这行：
-filetype detect
-" echom "文件类型是"
-" echom &filetype
-" echom "文件类型输出结束"
-
-
 let mapleader =" "
 
-set hlsearch " 高亮search
-" s: search set highlight
-nnoremap <Leader>ss :set hlsearch!<CR>
-
-
-" >_>_>1.1 =====================================================begin
-" " 自动取消高亮
-let s:current_timer = -1
-
-func Highlight_Search_Off(timerId)
-  set hlsearch!
-endfunc
-
-func ResetTimer()
-  if s:current_timer > -1
-    call timer_stop(s:current_timer)
-  endif
-  " 第一个参数：按键多少秒后 自动取消
-  let s:current_timer = timer_start(1000, 'Highlight_Search_Off')
-endfunc
-
-
-nnoremap N N:call ResetTimer()<CR>
-nnoremap n n:call ResetTimer()<CR>
-" end========================================================<_<_<
-
-
+" About search
 " >_>_>===================================================================begin
-" vscode里 按ctrl 】也不会搜到comment的内容
 
-" ms: mark as searh, 回头敲's跳回来
-" https://stackoverflow.com/a/3760486/14972148
-" 据说map了slash会影响其他插件. 不过先用着吧
-if &filetype == 'vim'
-    nnoremap ? msgg/\v^[^"]*
-" 防止检测filetype不准
-elseif expand('%:t') == 'init.vim'
-    nnoremap ? msgg/\v^[^"]*
+    set incsearch         " incremental searching
+    set wrapscan
+    set ignorecase smartcase
 
-" vim的某个文件已经设置了:  au BufNewFile,BufRead *.ahk  setf autohotkey
-elseif &filetype == 'autohotkey'
-    nnoremap ? msgg/\v^[^;]*
-    " todo 装个插件
-    " https://github.com/hnamikaw/vim-autohotkey
-elseif expand('%:t') == 'wf_key.ahk'
-    nnoremap ? msgg/\v^[^;]*
-elseif expand('%:t') == 'tmux.conf'
-    nnoremap ? msgg/\v^[^#]*
-elseif &filetype  == 'zsh'
-    nnoremap ? msgg/\v^[^#]*
-elseif &filetype  == 'json'
-    nnoremap ? msgg/\v^[^/]*
-else
-    " vscode neovim无法识别filetype?
-    " 暂时一锅乱炖
-    nnoremap ? msgg/\v^[^#";]*
-endif
+    " .1 自动取消高亮=========================================begin
+        set hlsearch " 高亮search
+        " s: search set highlight
+        nnoremap <Leader>ss :set hlsearch!<CR>
 
-" 记作global search
-nnoremap g/ msgg/
-" end=====================================================================<_<_<
+
+        let s:current_timer = -1
+
+        func Highlight_Search_off(timerId)
+            set hlsearch!
+        endfunc
+
+        func ResetTimer()
+            if s:current_timer > -1
+                call timer_stop(s:current_timer)
+            endif
+            " 第一个参数：按键多少秒后 自动取消
+            let s:current_timer = timer_start(1000, 'Highlight_Search_off')
+        endfunc
+
+
+        nnoremap <silent> N N:call ResetTimer()<CR>
+        nnoremap <silent> n n:call ResetTimer()<CR>
+    " end========================================================<_<_<
+
+
+    " .2 不搜注释里的内容=========================================begin
+    " filetype        on        " 检测文件类型
+    " filetype plugin on        " 针对不同的文件类型, load不同plugin
+    " filetype indent on        " 针对不同的文件类型采用不同的缩进格式
+    filetype plugin indent on " 实现了上面3行
+                                " there is no need  to do ":filetype on" after ":syntax on".
+
+    " if the file type is not detected automatically, or it finds the wrong type,
+    " you can  add a modeline to your  file.
+    " 但我用笔记本时，root用户或者vscode-neovim使得modeline是off的，不能靠modeline这时要靠这行：
+
+    filetype detect
+    " echom "文件类型是"
+    " echom &filetype
+    " echom "文件类型输出结束"
+
+
+    " ms: mark as searh, 回头敲's跳回来
+    " https://stackoverflow.com/a/3760486/14972148
+    " 据说map了slash会影响其他插件. 不过先用着吧
+        if &filetype == 'vim'
+            nnoremap ? msgg/\v^[^"]*
+        " 防止检测filetype不准
+        elseif expand('%:t') == 'init.vim'
+            nnoremap ? msgg/\v^[^"]*
+
+        " vim的某个文件已经设置了:  au BufNewFile,BufRead *.ahk  setf autohotkey
+        elseif &filetype == 'autohotkey'
+            nnoremap ? msgg/\v^[^;]*
+            " todo 装个插件
+            " https://github.com/hnamikaw/vim-autohotkey
+        elseif expand('%:t') == 'wf_key.ahk'
+            nnoremap ? msgg/\v^[^;]*
+        elseif expand('%:t') == 'tmux.conf'
+            nnoremap ? msgg/\v^[^#]*
+        elseif &filetype  == 'zsh'
+            nnoremap ? msgg/\v^[^#]*
+        elseif &filetype  == 'json'
+            nnoremap ? msgg/\v^[^/]*
+        else
+            " vscode neovim无法识别filetype?
+            " 暂时一锅乱炖
+            nnoremap ? msgg/\v^[^#";]*
+        endif
+
+        " 记作global search
+        nnoremap g/ msgg/
+    " end=====================================================================<_<_<
 
 
 
@@ -252,12 +254,17 @@ let g:selecmode="mouse"
 
 "  系统粘贴板  "+
 inoremap <C-V> "+p
-set clipboard=""  " 默认就是这样
-if hostname() == 'redmi14-leo' && !exists('g:vscode')
-    echo 'wls有bug， 别设unnamedplus'
-else
-    set clipboard+=unnamedplus  " vim外也可以粘贴vim的registry了
-endif
+set clipboard+=unnamedplus  " vim外也可以粘贴vim的registry了
+" echo 'wls有bug， 别设unnamedplus'
+" xsel换成xcliip, 貌似可以在wsl下用unnamedplus了
+        " if hostname() == 'redmi14-leo' && !exists('g:vscode')
+        "     " set clipboard=""  " 默认就是这样
+        "
+        "     " 备用方案:
+        "     " wsl下:
+        "     " https://github.com/equalsraf/win32yank/release
+        "     " https://gist.github.com/MinSomai/c732fc66e36534feb5a8fb9e0a3c8fb2
+        " endif
 
 inoremap <C-P> <Esc>pa
 " 现在的ctrl v能在normal模式下直接粘贴系统粘贴板的内容
@@ -438,7 +445,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/vim-plug' " 为了能用:help plug-options
 
 
-" Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }  " 会报错
 Plug 'preservim/nerdtree'
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
@@ -630,6 +637,10 @@ Plug 'sisrfeng/toggle-bool'
 noremap <leader>b :ToggleBool<CR>
 
 Plug 'mbbill/undotree'
+call plug#end()
+
+
+
 if has('persistent_undo')
     let target_path = expand('~/.undodir')
     " let target_path = expand('~/.undo_dir_nvim_wf')
@@ -664,7 +675,6 @@ let g:undotree_SetFocusWhenToggle = 1
 " todo
 " https://github.com/pechorin/any-jump.vim
 
-call plug#end()
 
 
 if has('win32')
@@ -1146,11 +1156,6 @@ set showmatch  " 括号配对情况, 跳转并高亮一下匹配的括号
 set matchtime=5  " How many tenths of a second to blink when matching brackets
 
 
-set nowrapscan  " serch时，到了顶部/底部，别再跑
-set ignorecase smartcase
-
-
-
 " set cmdheight=2
 
 " 代码折叠
@@ -1351,6 +1356,7 @@ endfunc
 
 
 if !has('win32')
+    " 这行要调用lucius， 要在它后面：call plug#end()
     source ~/dotF/cfg/nvim/beautify_wf.vim
     " 这么写比较啰嗦：
     " let s:beauty_path = fnamemodify($MYVIMRC, ":p:h") . "/beautify_wf.vim"    " 字符串concat，用点号
@@ -1446,6 +1452,7 @@ set guitablabel=\[%N\]\ %t\ %M
 "
 " set guitablabel=%{GuiTabLabel()}
 "
+
 
 if exists('g:vscode')
     " cnoremap s/ s/\v
