@@ -1163,7 +1163,8 @@ alias rm='nocorrect rm -Irv --preserve-root'
 
 # n:  new zsh
 # alias o='source ~/.zshrc'  # 有时source后，alias就算在文件中被删了，还在"
-alias o='zsh' # 敲习惯了
+# alias o='zsh' # 敲习惯了
+alias o='omd'
 alias n='zsh'
 
 

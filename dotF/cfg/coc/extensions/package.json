@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "coc-json": ">=1.4.0",
-    "coc-pyright": ">=1.1.194"
-  }
-}

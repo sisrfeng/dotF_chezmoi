@@ -253,10 +253,10 @@ let g:selecmode="mouse"
 "  系统粘贴板  "+
 inoremap <C-V> "+p
 set clipboard=""  " 默认就是这样
-if hostname() != 'redmi14-leo'
-    set clipboard+=unnamedplus  " vim外也可以粘贴vim的registry了
-else
+if hostname() == 'redmi14-leo' && !exists('g:vscode')
     echo 'wls有bug， 别设unnamedplus'
+else
+    set clipboard+=unnamedplus  " vim外也可以粘贴vim的registry了
 endif
 
 inoremap <C-P> <Esc>pa
