@@ -300,10 +300,14 @@ bgit(){git $* | bat}
 alias le="less  --quit-if-one-screen"
 # alias le="less  "
 
-alias nvim='~/dotF/nvim-linux64/bin/nvim'
-alias vim='~/dotF/nvim-linux64/bin/nvim'
-alias vi='~/dotF/nvim-linux64/bin/nvim'   # 不用加-u 指定 因为默认就在~/.config/下
-# alias vim='~/dotF/nvim-linux64/bin/nvim -u ~/dotF/cfg/nvim/init.vim'
+# 方便在命令中间直接敲nvim
+alias vim='nvim'
+alias vi='nvim'
+    # rc.zsh里有:
+            # export PATH="$HOME/dotF/nvim-linux64/bin:$HOME/dotF/bin_wf:$PATH:/snap/bin"
+    # 这个不必了: alias nvim='~/dotF/nvim-linux64/bin/nvim'
+# 不用加-u 指定 因为默认就在~/.config/下
+# alias vim='nvim ~/dotF/cfg/nvim/init.vim'
 
 
 
@@ -799,9 +803,13 @@ alias al='e ~/dotF/alias.zsh; zsh'
 alias in='e ~/dotF/cfg/nvim/init.vim'  # init.vim
 
 
-
-alias omd='chezmoi --config ~/.config/chezmoi/wf_omd.toml'
 alias x='git'
+
+# 一样:
+alias o='\chezmoi --config ~/.config/chezmoi/wf_omd.toml'
+alias omd='\chezmoi --config ~/.config/chezmoi/wf_omd.toml'
+alias chezmoi='\chezmoi --config ~/.config/chezmoi/wf_omd.toml'
+
 # get github
 gg(){
     chpwd_functions=()  # 别显示 所去目录下的文件
@@ -1164,7 +1172,6 @@ alias rm='nocorrect rm -Irv --preserve-root'
 # n:  new zsh
 # alias o='source ~/.zshrc'  # 有时source后，alias就算在文件中被删了，还在"
 # alias o='zsh' # 敲习惯了
-alias o='omd'
 alias n='zsh'
 
 
