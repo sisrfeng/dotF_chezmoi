@@ -1344,13 +1344,13 @@ bindkey '^[^H' run-help  # zsh-vi-mode 应该把它变成 delete-forward-word. �
 # 博客也有教覆盖的：https://www.tecmint.com/create-and-use-bash-aliases-in-linux/
 # alias r='~/.local/bin/tldr'  # pip安装的，比apt安装的显示好些 但不翻墙就有时连不上网。。。。。翻了也用不了....
 h(){
-    ( whence -ca $1 ; echo '' ;  /usr/bin/tldr $1 ) | less --quit-if-one-screen
+    ( whence -ca $1 ; echo '' ; tldr $1 ) | less --quit-if-one-screen
     # todo https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
     # parameter expansion
-    VAR="$(/usr/bin/tldr $1)" # 赋值时千万别写空格！！
-    if [[ ${VAR} == *"No tldr entry for"* ]]
+    VAR="$(tldr $1)" # 赋值时千万别写空格！！
+    if [[ ${VAR} == *"This page doesn't exist yet"* ]]
     then
-        PAGER=LESS run-help $1
+        PAGER=less run-help $1
     fi
     # echo 'zsh的man不全？试试这个'
     # echo 'w3m man.cx/你的命令'  # 更新：run-help就可以找到zsh的built-in
