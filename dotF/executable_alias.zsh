@@ -5,6 +5,7 @@
 alias '$'='' # 省去删掉复制来的命令 最前面的$
 # oh my git    oh my god
 
+alias w3m='echo "w3m或者ranger显示图片是很难的__等关注的issue的邮件通知吧" ; w3m'
 alias u='unset ALL_PROXY'
 
 # 多加一个找manpage的路径

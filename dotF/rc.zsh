@@ -430,22 +430,36 @@ export PATH="$HOME/dotF/bin_wf:$PATH:/snap/bin"
 # 找nvim时, 优先找dotF里面的,别用/bin等系统目录
 # 这个就不必了:alias nvim='~/dotF/nvim-linux64/bin/nvim'
 #
+
+
+# 需要更新时自己敲 brew update
+export HOMEBREW_NO_AUTO_UPDATE=1
 brew_wf="/home/linuxbrew/.linuxbrew"
-export HOMEBREW_PREFIX=${brew_wf}
-export HOMEBREW_CELLAR="${brew_wf}/Cellar"
-export HOMEBREW_REPOSITORY="${brew_wf}/Homebrew"
-export PATH="${brew_wf}/bin:${brew_wf}/sbin${PATH+:$PATH}"
-    # bash里好像是:+ 下面内容待确认
-    # ${PATH+:$PATH}
-        # if $PATH exists  and is not null ,  then add :$PATH
-            # you don't want to add the leading (or trailing) colon if $PATH is undefined.
-            # A zero-length (null) directory name in the path, as in
-            # :/usr/local/bin:/usr/bin,
-            # /usr/local/bin:/usr/bin:,
-            # /usr/local/bin::/usr/bin,
-            # means search the current directory.
-    # ${wf_var+:$PATH}
-export MANPATH="${brew_wf}/share/man${MANPATH+:$MANPATH}:"
-export INFOPATH="${brew_wf}/share/info:${INFOPATH:-}"  # 最后的减号是啥?zsh的文档太难懂了...
+
+# homebrew
+hb() {
+    PATH="$brew_wf/bin:$PATH" \
+    $brew_wf/bin/brew         \
+    "$@"
+}
+# https://zhuanlan.zhihu.com/p/81840844  #  避免污染系统环境, 不再用下面的
+
+            # export HOMEBREW_PREFIX=${brew_wf}
+            # export HOMEBREW_CELLAR="${brew_wf}/Cellar"
+            # export HOMEBREW_REPOSITORY="${brew_wf}/Homebrew"
+            # export PATH="${brew_wf}/bin:${brew_wf}/sbin${PATH+:$PATH}"
+            #     # bash里好像是:+ 下面内容待确认
+            #     # ${PATH+:$PATH}
+            #         # if $PATH exists  and is not null ,  then add :$PATH
+            #             # you don't want to add the leading (or trailing) colon if $PATH is undefined.
+            #             # A zero-length (null) directory name in the path, as in
+            #             # :/usr/local/bin:/usr/bin,
+            #             # /usr/local/bin:/usr/bin:,
+            #             # /usr/local/bin::/usr/bin,
+            #             # means search the current directory.
+            #     # ${wf_var+:$PATH}
+            # export MANPATH="${brew_wf}/share/man${MANPATH+:$MANPATH}:"
+            # export INFOPATH="${brew_wf}/share/info:${INFOPATH:-}"  # 最后的减号是啥?zsh的文档太难懂了...
+
 
 export BROWSER=w3m

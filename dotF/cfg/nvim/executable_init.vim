@@ -896,10 +896,13 @@ set pastetoggle=<F9>
 
 
 " 这两个都不行， airblade/vim-rooter也不行了
-" :lcd吧
 " set autochdir
 " autocmd BufEnter * silent! lcd %:p:h
-autocmd VimEnter * set autochdir
+
+" Note: When this option is on some plugins may not work.
+" 在vscode里会报错, 放到no_vscode.vim
+    " autocmd VimEnter * set autochdir
+" vscode里, 可以手动敲 :lcd
 
 
 noremap <Leader>y "*y
@@ -1457,13 +1460,10 @@ set guitablabel=\[%N\]\ %t\ %M
 if exists('g:vscode')
     " cnoremap s/ s/\v
     " vscode里，用了camp时，必须在光标后有字符才能正常map
-    echom '准备进入has_vscode.vim: 路径'
+    " echom '准备进入has_vscode.vim: 路径'
     echom $has_vscode
     source $has_vscode
 else
     source $no_vscode
 endif
 
-
-" =============================================vim-plug===============================end
-"

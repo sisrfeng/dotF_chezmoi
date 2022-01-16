@@ -211,3 +211,7 @@ Plug 'plasticboy/vim-markdown'
 " echom '(*_* no_vscode.vim 导入完成  *_*)'
 
 
+" Note: When this option is on some plugins may not work.
+" 在vscode里会报错, 放到no_vscode.vim
+autocmd VimEnter * set autochdir
+" vscode里, 可以手动敲 :lcd
