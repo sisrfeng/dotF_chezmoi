@@ -1,7 +1,0 @@
-__zplug::core::load::as_plugin --repo "zsh-users/zsh-autosuggestions" "/home/wf/dotF/zplug/repos/zsh-users/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-__zplug::core::load::as_plugin --repo "softmoth/zsh-vim-mode" "/home/wf/dotF/zplug/repos/softmoth/zsh-vim-mode/zsh-vim-mode.plugin.zsh"
-__zplug::core::load::as_plugin --repo "srijanshetty/zsh-pip-completion" "/home/wf/dotF/zplug/repos/srijanshetty/zsh-pip-completion/zsh-pip-completion.plugin.zsh"
-__zplug::core::load::as_plugin --repo "zsh-users/zsh-history-substring-search" "/home/wf/dotF/zplug/repos/zsh-users/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
-__zplug::core::load::as_plugin --repo "rupa/z" "/home/wf/dotF/zplug/repos/rupa/z/z.sh"
-__zplug::core::load::as_plugin --repo "zsh-users/zsh-completions" "/home/wf/dotF/zplug/repos/zsh-users/zsh-completions/zsh-completions.plugin.zsh"
-__zplug::core::load::as_plugin --repo "zplug/zplug" "/home/wf/dotF/zplug/repos/zplug/zplug/init.zsh"
