@@ -2,11 +2,12 @@
   email = liuweifengemail@163.com
   name = sisrfeng
 [credential]
+  # 记住密码
   helper = store
 [core]
     pager = delta
 	excludesFile = $HOME/dotF/cfg/git/user_global_gitignore
- # 这样可以正确输出中文文件名
+    # 这样可以正确输出中文文件名
 	quotepath = false
 [alias]
 	br = branch
