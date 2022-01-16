@@ -172,15 +172,19 @@ select-word-style bash  # 斜杠 下划线等 会作为单词的分隔
 # zplug里面的vim-mode搞鬼，导致放在zplug load后 会不起作用
 
 # [[==================================zsh插件管理：zplug=================================
-export ZPLUG_HOME=$HOME/.zplug
-export ZPLUG_CACHE_DIR=$ZPLUG_HOME/.cache  # 默认就是这样
-export ZPLUG_REPOS=$ZPLUG_HOME/repos  # 默认就是这样
+# 别用等号对齐! zsh的空格是有意义的!
+# zplug的环境变量都在这里指定了
+export ZPLUG_HOME=$HOME/dotF/zplug
+export Z_P=$ZPLUG_HOME
+export ZPLUG_BIN=$Z_P/bin
+export ZPLUG_CACHE_DIR=$Z_P/.cache
+export ZPLUG_LOADFILE=$Z_P/packages.zsh  # todo: 把下面zplu '某人/某项目'扔到这文件
+export ZPLUG_REPOS=$Z_P/repos  # 默认是在$HOME/.zplug底下
+source $Z_P/init.zsh
 
 # could be set to Linux for normal systems.
 # Without that setting, ps follows the useless and bad parts of the Unix98 standard.
 export PS_PERSONALITY=linux
-
-source $ZPLUG_HOME/init.zsh
 
 # zplug "modules/prompt", from:prezto
 # use double quotes

@@ -1,0 +1,8 @@
+rupa/z, use:z.sh
+softmoth/zsh-vim-mode
+srijanshetty/zsh-pip-completion
+zplug/zplug, hook-build:zplug --self-manage
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting, defer:2
