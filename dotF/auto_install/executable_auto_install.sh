@@ -199,12 +199,7 @@ git config --global credential.helper store
 
 # 别用等号对齐! zsh的空格是有意义的!
 # zplug的环境变量都在这里指定了
-export ZPLUG_HOME=$HOME/dotF/zplug
-export Z_P=$ZPLUG_HOME
-export ZPLUG_BIN=$Z_P/bin
-export ZPLUG_CACHE_DIR=$Z_P/.cache
-export ZPLUG_LOADFILE=$Z_P/packages.zsh  # todo: 把下面zplu '某人/某项目'扔到这文件
-export ZPLUG_REPOS=$Z_P/repos  # 默认是在$HOME/.zplug底下
+export ZPLUG_HOME=$HOME/.zplug
 git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
 zsh

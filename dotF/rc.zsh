@@ -174,14 +174,18 @@ select-word-style bash  # 斜杠 下划线等 会作为单词的分隔
 # [[==================================zsh插件管理：zplug=================================
 # 别用等号对齐! zsh的空格是有意义的!
 # zplug的环境变量都在这里指定了
-export ZPLUG_CACHE_DIR=$HOME/.cache
+export ZPLUG_HOME=$HOME/.zplug
+# 其余的zplug环境变量,统一用默认的.
+# 换机器时,  敲这个就好,别同步$ZPLUG_HOME, 权限\缓存啥的有冲突
+# git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
-export ZPLUG_HOME=$HOME/dotF/zplug
-export Z_P=$ZPLUG_HOME
-export ZPLUG_BIN=$Z_P/bin
-export ZPLUG_LOADFILE=$Z_P/packages.zsh  # todo: 把下面zplu '某人/某项目'扔到这文件
-export ZPLUG_REPOS=$Z_P/repos  # 默认是在$HOME/.zplug底下
-source $Z_P/init.zsh
+# export ZPLUG_CACHE_DIR=$HOME/.cache
+# export ZPLUG_HOME=$HOME/dotF/zplug
+# export Z_P=$ZPLUG_HOME
+# export ZPLUG_BIN=$Z_P/bin
+# export ZPLUG_LOADFILE=$Z_P/packages.zsh  # todo: 把下面zplu '某人/某项目'扔到这文件
+# export ZPLUG_REPOS=$Z_P/repos  # 默认是在$HOME/.zplug底下
+source $ZPLUG_HOME/init.zsh
 
 # could be set to Linux for normal systems.
 # Without that setting, ps follows the useless and bad parts of the Unix98 standard.
