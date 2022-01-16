@@ -427,6 +427,7 @@ alias ll='\ls -1htr --color=always --classify | head -30'
 lf(){
     exa                  \
         --long           \
+        --all            \
         --classify       \
         --colour=always  \
         --header         \
