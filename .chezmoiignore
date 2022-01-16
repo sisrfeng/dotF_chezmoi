@@ -5,3 +5,4 @@ __pycache__
 **/*.pyc
 
 chezmoistate.boltdb
+**/chezmoistate.boltdb
