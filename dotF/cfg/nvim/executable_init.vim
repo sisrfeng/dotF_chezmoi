@@ -1454,6 +1454,8 @@ if exists('g:vscode')
     " echom '准备进入has_vscode.vim: 路径'
     echom $has_vscode
     source $has_vscode
+    echom 'wsl下pwd有问题, 等邮件通知更新'
+    " https://github.com/asvetliakov/vscode-neovim/issues/520
 else
     source $no_vscode
 endif

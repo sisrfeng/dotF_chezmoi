@@ -3,7 +3,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'plasticboy/vim-markdown'
 
     " Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }  " 会报错
-    echom '调用nerdtree'
     Plug 'preservim/nerdtree'
         autocmd StdinReadPre * let s:std_in=1
         autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
@@ -221,7 +220,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " Note: When this option is on some plugins may not work.
-" 在vscode里会报错, 放到no_vscode.vim
+" 要是放到vscode里会报错:
 autocmd VimEnter * set autochdir
 " vscode里, 可以手动敲 :lcd
-echom 'no_vscode.vim执行完了'
+" echom 'no_vscode.vim执行完了'
