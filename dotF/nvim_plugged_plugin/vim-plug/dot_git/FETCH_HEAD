@@ -1,0 +1,5 @@
+e300178a0e2fb04b56de8957281837f13ecf0b27		branch 'master' of https://github.com/junegunn/vim-plug
+d7f18469321c1bc264e7c93178c6643e93cb1538	not-for-merge	branch 'autocmd' of https://github.com/junegunn/vim-plug
+1ef36091feedde4a7273a5c221eb6f46319a2e65	not-for-merge	branch 'devel' of https://github.com/junegunn/vim-plug
+4a3e85e87850a94f74dbb687257f0f659fcd4980	not-for-merge	branch 'neovim-bionic' of https://github.com/junegunn/vim-plug
+6287ba88d5e411db2a104a96efc2dde6928ae2a6	not-for-merge	branch 'vim8' of https://github.com/junegunn/vim-plug

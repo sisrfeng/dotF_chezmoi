@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled sorted 
+d96ba3e775c244236712b744d773468f3082e1bc refs/remotes/origin/12357-paywall
+6b208485285b0236dda131d4e1f1a573d56b8de5 refs/remotes/origin/fix-inccommand-endif
+03af0ed649274c6dcf209f50b3b7906d6a7e6872 refs/remotes/origin/master
+1bf26b88f006d06c18148f61d560c7771342974d refs/remotes/origin/rm-manual-instructions
