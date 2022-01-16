@@ -1,4 +1,13 @@
 " abbrev >_>_>==========================================================begin
+call plug#begin(stdpath('data') . '/plugged')
+    Plug 'plasticboy/vim-markdown'
+
+    " Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }  " 会报错
+    Plug 'preservim/nerdtree'
+        autocmd StdinReadPre * let s:std_in=1
+        autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+call plug#end()
 
 " abbrev 和map的区别，就像ahk里 hotkey和hotstring
 " 触发： space, Escape, or Enter.
@@ -206,7 +215,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " coc补全=====================================================================<_<_<
 
 
-Plug 'plasticboy/vim-markdown'
 
 " echom '(*_* no_vscode.vim 导入完成  *_*)'
 
