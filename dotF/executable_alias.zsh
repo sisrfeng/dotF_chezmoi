@@ -1,6 +1,10 @@
 # The shell evaluation order (per POSIX) for the entities in your question is:
 # aliases 优先于  variables --> command substitutions --> special built-ins --> functions --> regular built-ins
 
+# zsh bindkey
+alias zbk='e ~/dotF/bindkey_wf.zsh ; zsh'
+
+
 # https://stackoverflow.com/questions/58601523/how-do-i-remove-the-head-of-dollar-sign-on-stdin-line-in-shell#comment103516994_58601646
 alias '$'='' # 省去删掉复制来的命令 最前面的$
 # oh my git    oh my god

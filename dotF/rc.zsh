@@ -409,6 +409,7 @@ colors
 # PS1="${换行}%{${CONDA_PROMPT_MODIFIER}"
 PS1="%{${CONDA_PROMPT_MODIFIER}"
 PS1+="$fg[cyan]%}%~${换行}"
+# PS1="$fg[cyan]%}%~${换行}"
 PS1+="%{$reset_color%}"
 PS1+=">"
 export PS1
@@ -471,3 +472,4 @@ export PATH="$HOME/dotF/bin_wf:$PATH:/snap/bin"
     export INFOPATH="${brew_wf}/share/info:${INFOPATH:-}"  # 最后的减号是啥?zsh的文档太难懂了...
 
 export BROWSER=w3m
+

@@ -485,32 +485,41 @@ call plug#begin(stdpath('data') . '/plugged')
 
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
     nmap ga <Plug>(EasyAlign)
-    " \|是竖线的escape   dict里面不能放注释？ shell的换行也是，不像python
-    let g:easy_align_delimiters = {
-        \ '>': { 'pattern': '>>\|=>\|>' },
-        \ '\': { 'pattern': '\\$' },
-        \ '/': {
-        \     'pattern':         '//\+\|/\*\|\*/',
-        \     'delimiter_align': 'l',
-        \     'ignore_groups':   ['!Comment'] },
-        \ ']': {
-        \     'pattern':       '[[\]]',
-        \     'left_margin':   0,
-        \     'right_margin':  0,
-        \     'stick_to_left': 0
-        \   },
-        \ ')': {
-        \     'pattern':       '[()]',
-        \     'left_margin':   0,
-        \     'right_margin':  0,
-        \     'stick_to_left': 0
-        \   },
-        \ 'd': {
-        \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
-        \     'left_margin':  0,
-        \     'right_margin': 0
-        \   }
-        \ }
+    " wf_align
+        " \|是竖线的escape   dict里面不能放注释？ shell的换行也是，不像python
+        " 空行分开的前面几个,是我自定义的
+        " 小心对齐后 字符串里多出来的空格
+        let g:easy_align_delimiters = {
+            \                          'r': { 'pattern': "whatever_wf_want" },
+            \
+            \                          '?': { 'pattern': '?' },
+            \                          ':': { 'pattern': ":" },
+            \                          '\': { 'pattern': '\' },
+            \
+            \                          '>': { 'pattern': '>>\|=>\|>' },
+            \                          '/': {
+            \                                 'pattern'         : '//\+\|/\*\|\*/',
+            \                                 'delimiter_align' : 'l',
+            \                                 'ignore_groups'   : ['!Comment']
+            \                               },
+            \                          ']': {
+            \                                 'pattern'       : '[[\]]',
+            \                                 'left_margin'   : 0,
+            \                                 'right_margin'  : 0,
+            \                                 'stick_to_left' : 0
+            \                               },
+            \                          ')': {
+            \                                 'pattern'       : '[()]',
+            \                                 'left_margin'   : 0,
+            \                                 'right_margin'  : 0,
+            \                                 'stick_to_left' : 0
+            \                            },
+            \                          'd': {
+            \                                 'pattern'      : ' \(\S\+\s*[;=]\)\@=',
+            \                                 'left_margin'  : 0,
+            \                                 'right_margin' : 0
+            \                               }
+            \                          }
 
     " [[==============================easymotion 配置=====================begin
 
