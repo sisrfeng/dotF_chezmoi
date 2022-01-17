@@ -75,7 +75,9 @@ bindkey -s "\eo" "~/omd_dotF \n"  #  alt负责路径切换
 # bindkey -s "\C-b" "echo '待用' \n"
 
 # 待绑定：
+# C-f
 # C-b
+# C-d
 # C-8
 # C-g
 # C-Space
