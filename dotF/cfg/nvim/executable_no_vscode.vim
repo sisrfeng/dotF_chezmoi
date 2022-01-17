@@ -29,23 +29,25 @@ inoreabbrev HO $HOME/
 
 
 
-cnoreabbrev <expr> pi    getcmdtype() == ":" && getcmdline() == 'pi'   ? 'PlugInstall' : 'pi'
-cnoreabbrev <expr> ctr   getcmdtype() == ":" && getcmdline() == 'tab help ctr'   ? 'CTRL' : 'ctr'
-cnoreabbrev <expr> bd    getcmdtype() == ":" && getcmdline() == 'bd'   ? 'tabedit ~/.zshrc' : 'bd'
-cnoreabbrev <expr> e     getcmdtype() == ":" && getcmdline() == 'e'   ? 'tabedit' : 'e'
-cnoreabbrev <expr> et    getcmdtype() == ":" && getcmdline() == 'et'   ? 'tabedit ~/d/tmp.py' : 'et'
-cnoreabbrev <expr> tc    getcmdtype() == ":" && getcmdline() == 'tc'   ? 'tabedit ~/dotF/cfg/tmux/tmux.conf' : 'tc'
-cnoreabbrev <expr> in    getcmdtype() == ":" && getcmdline() == 'in'  ? 'tabedit ~/dotF/cfg/nvim/init.vim' : 'in'
-cnoreabbrev <expr> s     getcmdtype() == ":" && getcmdline() == 's'   ? 'tabedit ~/dotF/rc.zsh' : 's'
-cnoreabbrev <expr> al    getcmdtype() == ":" && getcmdline() == 'al'   ? 'tabedit ~/dotF/alias.zsh' : 'al'
-cnoreabbrev <expr> map   getcmdtype() == ":" && getcmdline() == 'map'   ? 'verbose map' : 'map'
-cnoreabbrev <expr> imap  getcmdtype() == ":" && getcmdline() == 'imap'   ? 'verbose imap' : 'imap'
-cnoreabbrev <expr> cmap  getcmdtype() == ":" && getcmdline() == 'cmap'   ? 'verbose cmap' : 'cmap'
-cnoreabbrev <expr> cm    getcmdtype() == ":" && getcmdline() == 'cm'   ? 'tab help' : 'cm'
-cnoreabbrev <expr> h     getcmdtype() == ":" && getcmdline() == 'h'   ? 'tab help' : 'h'
-cnoreabbrev <expr> cfg   getcmdtype() == ":" && getcmdline() == 'cfg'   ? 'cd ~/dotF/cfg' : 'cfg'
-cnoreabbrev <expr> mdf   getcmdtype() == ":" && getcmdline() == 'mdf'   ? 'cd ~/dotF/' : 'mdf'
-cnoreabbrev <expr> ~/   getcmdtype()  == ":" && getcmdline() == '~/'   ? 'cd ~/' : '~/'
+cnoreabbrev <expr> zbk   getcmdtype() == ":" && getcmdline() == 'zbk'          ? 'tabedit ~/dotF/bindkey_wf.zsh'     :   'zbk'
+cnoreabbrev <expr> pi    getcmdtype() == ":" && getcmdline() == 'pi'           ? 'PlugInstall'                       :   'pi'
+cnoreabbrev <expr> ctr   getcmdtype() == ":" && getcmdline() == 'tab help ctr' ? 'CTRL'                              :   'ctr'
+cnoreabbrev <expr> bd    getcmdtype() == ":" && getcmdline() == 'bd'           ? 'tabedit ~/.zshrc'                  :   'bd'
+cnoreabbrev <expr> e     getcmdtype() == ":" && getcmdline() == 'e'            ? 'tabedit'                           :   'e'
+cnoreabbrev <expr> et    getcmdtype() == ":" && getcmdline() == 'et'           ? 'tabedit ~/d/tmp.py'                :   'et'
+cnoreabbrev <expr> tc    getcmdtype() == ":" && getcmdline() == 'tc'           ? 'tabedit ~/dotF/cfg/tmux/tmux.conf' :   'tc'
+cnoreabbrev <expr> in    getcmdtype() == ":" && getcmdline() == 'in'           ? 'tabedit ~/dotF/cfg/nvim/init.vim'  :   'in'
+cnoreabbrev <expr> s     getcmdtype() == ":" && getcmdline() == 's'            ? 'tabedit ~/dotF/rc.zsh'             :   's'
+cnoreabbrev <expr> al    getcmdtype() == ":" && getcmdline() == 'al'           ? 'tabedit ~/dotF/alias.zsh'          :   'al'
+cnoreabbrev <expr> map   getcmdtype() == ":" && getcmdline() == 'map'          ? 'verbose map'                       :   'map'
+cnoreabbrev <expr> imap  getcmdtype() == ":" && getcmdline() == 'imap'         ? 'verbose imap'                      :   'imap'
+cnoreabbrev <expr> cmap  getcmdtype() == ":" && getcmdline() == 'cmap'         ? 'verbose cmap'                      :   'cmap'
+cnoreabbrev <expr> cm    getcmdtype() == ":" && getcmdline() == 'cm'           ? 'tab help'                          :   'cm'
+cnoreabbrev <expr> h     getcmdtype() == ":" && getcmdline() == 'h'            ? 'tab help'                          :   'h'
+cnoreabbrev <expr> cfg   getcmdtype() == ":" && getcmdline() == 'cfg'          ? 'cd ~/dotF/cfg'                     :   'cfg'
+cnoreabbrev <expr> mdf   getcmdtype() == ":" && getcmdline() == 'mdf'          ? 'cd ~/dotF/'                        :   'mdf'
+cnoreabbrev <expr> dot   getcmdtype() == ":" && getcmdline() == 'dot'          ? 'cd ~/dotF/'                        :   'dot'
+cnoreabbrev <expr> ~/    getcmdtype() == ":" && getcmdline() == '~/'           ? 'cd ~/'                             :   '~/'
 
 
 
@@ -99,14 +101,9 @@ endif
 " >_>_>===================================================================begin
 " echo '没在用 vscode-neovim, 纯 nvim'
 
-
-nnoremap <silent> gd <Plug>(coc-definition)
-" 代替了:
-    " nnoremap gd g<C-]>
-        " <C-]>只能在本文件内跳转
-    " nnoremap gd :KiteGotoDefinition<CR>
-
-
+" <C-]>只能在本文件内跳转
+nnoremap gd g<C-]>
+" nnoremap gd :KiteGotoDefinition<CR>
 
 set  number relativenumber
 nnoremap <Leader>n :call HideNumber()<CR>
