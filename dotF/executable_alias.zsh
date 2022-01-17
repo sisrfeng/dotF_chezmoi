@@ -3,6 +3,10 @@
 
 # zsh bindkey
 alias zbk='e ~/dotF/bindkey_wf.zsh ; zsh'
+cda(){
+    conda activate $1
+    echo $1 > ~/.t/conda_name
+}
 
 
 # https://stackoverflow.com/questions/58601523/how-do-i-remove-the-head-of-dollar-sign-on-stdin-line-in-shell#comment103516994_58601646

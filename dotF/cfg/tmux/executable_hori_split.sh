@@ -10,9 +10,9 @@
 # tmux run-shell 'echo CONDA_DEFAULT_ENV:  $CONDA_DEFAULT_ENV'  # 一直是空白
 
 tmux run-shell 'echo $CONDA_DEFAULT_ENV > ~/.t/conda_env_name_wf' Enter
-tmux split-window -h -p 50  -c '#{pane_current_path}'
+tmux split-window -v -p 50  -c '#{pane_current_path}'
 #                    # -p percent,
-tmux send-keys  ' conda activate `cat ~/.t/conda_env_name_wf` ' Enter
+tmux send-keys  ' conda activate `cat ~/.t/conda_name` ' Enter
 #                                             # Enter加不加引号都行
 # tmux send-keys  "clear && figlet Welcome" 'Enter'
 
