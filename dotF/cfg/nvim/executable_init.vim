@@ -51,8 +51,8 @@ autocmd!
 " ++nested 在老版本中是nested
                                                                                 " 点号拼接字符串
 autocmd Reload BufWritePost $MYVIMRC    ++nested   source $MYVIMRC | echom "更新了"."init.vim "| redraw
-autocmd Reload BufWritePost $no_vscode  ++nested   source $MYVIMRC | echom '根据环境变量，改了no_vscode.vim, 加载了init.vim' | redraw
-autocmd Reload BufWritePost $has_vscode  ++nested   source $MYVIMRC | echom '(改了has_vscode.vim, 更新init.vim)'  | redraw
+autocmd Reload BufWritePost $no_vscode  ++nested   source $MYVIMRC | echom '改了no_vscode.vim, reload了init.vim' | redraw
+autocmd Reload BufWritePost $has_vscode  ++nested   source $MYVIMRC | echom '改了has_vscode.vim, 更新init.vim'  | redraw
 
 " 4. Go back to the default group, named "end"
 augroup end
@@ -61,6 +61,8 @@ augroup end
 
 nnoremap gf :tabedit <cfile><CR>
 
+cnoremap <Up> <c-p>
+cnoremap <Down> <c-n>
 
 " =============================================================
 " block模式
@@ -316,22 +318,19 @@ noremap <BS> <left>
 nnoremap X <C-A>
 
 " 被coc占用了？
-" <C-X> 调自带的omnicomplete
+" <C-X> 调自带的omnicomplete,  有的功能好像被屏蔽了.
+" omonicomplet和coc可以互补?
 inoremap <C-F> <C-X><C-F>
 
-" 对于vscode-nvim：insert mode is being handled by vscode 所以<C-X>没反应
+    " 对于vscode-nvim：insert mode is being handled by vscode 所以<C-X>没反应
+                            " *i_CTRL-X* *insert_expand*
+    " CTRL-X enters a sub-mode where several commands can be used.  Most of these
+    " commands do keyword completion; see |ins-completion|.
 
-                        " *i_CTRL-X* *insert_expand*
-" CTRL-X enters a sub-mode where several commands can be used.  Most of these
-" commands do keyword completion; see |ins-completion|.
-
-
-" no help for <C-X>
-" no help for CTRL-X CRTL-O
-" 这样才行：
-" h i_CTRL-X
-
-
+    " no help for <C-X>
+    " no help for CTRL-X CRTL-O
+    " 这样才行：
+    " h i_CTRL-X
 
 
 " 这样可以 不那么死板地 只能用~/AppData/Local/nvim/init.vim来进入windows的nvim, 从而管理插件(
@@ -485,6 +484,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
     nmap ga <Plug>(EasyAlign)
+        " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+    nmap ga <Plug>(EasyAlign)
     " wf_align
         " \|是竖线的escape   dict里面不能放注释？ shell的换行也是，不像python
         " 空行分开的前面几个,是我自定义的
@@ -520,6 +521,7 @@ call plug#begin(stdpath('data') . '/plugged')
             \                                 'right_margin' : 0
             \                               }
             \                          }
+
 
     " [[==============================easymotion 配置=====================begin
 
@@ -631,6 +633,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 
 
+
     Plug 'sisrfeng/toggle-bool'
 
     " leaderf里有这个keybind，我这里覆盖掉
@@ -638,7 +641,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
     Plug 'mbbill/undotree'
 call plug#end()
-
 
 
 if has('persistent_undo')
@@ -821,13 +823,11 @@ nnoremap d} da}
 
 
 
-" inoremap cb '''<Esc>Go'''<Esc><C-o>i
-" change a block  " 百分号 能自动跳到配对的符号
-onoremap b %ib
-" nnoremap cb %cib
-" nnoremap vb %vib
-" nnoremap yb %yib
-
+" 百分号 能自动跳到配对的符号
+" onoremap b %ib  这样map后 yb有时会进入insert mode
+nnoremap cb %cib
+nnoremap vb %vib
+nnoremap yb %yib
 nnoremap db %dab
 
 

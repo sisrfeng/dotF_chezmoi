@@ -46,6 +46,8 @@ nnoremap qq <Cmd>call VSCodeNotify('workbench.action.revertAndCloseActiveEditor'
 
 
 
+"覆盖了 nnoremap <Leader>r :call WfRun()<CR>
+nnoremap <leader>r :  .,$subs  ###gc<Left><Left><Left><Left><C-R><C-W><Right>
 
 nnoremap ce A<space><space><Esc>o/<Esc><Esc>:::::call nerdcommenter#Comment("n", "Comment")<space><CR>kJA<BS>
 " 有时会弄脏代码，可能是vscode-nvim弹出窗口太慢了？它不能接管inputmode？  " 提issue吧

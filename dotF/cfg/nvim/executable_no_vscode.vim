@@ -101,9 +101,14 @@ endif
 " >_>_>===================================================================begin
 " echo '没在用 vscode-neovim, 纯 nvim'
 
-" <C-]>只能在本文件内跳转
-nnoremap gd g<C-]>
-" nnoremap gd :KiteGotoDefinition<CR>
+
+nnoremap <silent> gd <Plug>(coc-definition)
+" 代替了:
+    " nnoremap gd g<C-]>
+        " <C-]>只能在本文件内跳转
+    " nnoremap gd :KiteGotoDefinition<CR>
+
+
 
 set  number relativenumber
 nnoremap <Leader>n :call HideNumber()<CR>
